@@ -1,0 +1,239 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Single Page UI-Bootstrap</title>
+        <meta name="description" content="Single page UI-bootstrap template with back-button support">
+        <meta name="author" content="rhildred">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!--[if lt IE 9]>
+<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+        <style>
+
+            a.scrollToTop {
+                width: 100px;
+                height: 130px;
+                padding: 10px;
+                text-align: center;
+                font-family: 'Roboto Condensed', 'tahoma', 'Verdana', 'Geneva', sans-serif;
+                font-size: 13px;
+                background: url('https://rhildred.github.io/singlePage/www/images/uparrow.png') no-repeat center center;
+                font-weight: none;
+                color: #444;
+                text-decoration: none;
+                position: fixed;
+                top: 75px;
+                right: 1px;
+                display: block;
+                -webkit-transition: 3s;
+                -moz-transition: 3s;
+                transition: 3s;
+                cursor: pointer;
+                z-index: 8;
+            }
+            .scrollToTop:hover {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+
+    <body ng-app="app" ng-controller="mainController">
+        <div id="home">
+            <carousel style="height:340" interval="myInterval" no-wrap="noWrapSlides">
+                <slide ng-repeat="slide in slides" active="slide.active">
+                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <div class="carousel-caption">
+                        <h4>Slide {{$index}}</h4>
+                        <p>{{slide.text}}</p>
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+        <div class="navbar navbar-inverse {{navClass}}" role="navigation">
+            <div class="navbar-header">
+
+                <!-- note the ng-init and ng-click here: -->
+                <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <!-- note the ng-class here -->
+            <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li du-scrollspy="home"><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
+                    </li>
+                    <li du-scrollspy="about"><a href="#about" data-toggle="collapse" data-target=".navbar-collapse.in">About</a>
+                    </li>
+                    <li du-scrollspy="contact"><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="bookmark" id="about">
+            <h2>About</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="bookmark" id="contact">
+            <h2>Contact Rich Hildred</h2>
+            <div style="overflow:hidden;height:350px;width:100%;">
+                <div id="gmap_canvas" style="height:350px;width:100%;"></div>
+                <style>
+                    #gmap_canvas img {
+                        max-width: none!important;
+                        background: none!important
+                    }
+                </style><a class="google-map-code" href="http://www.trivoo.net/gutscheine/deichmann/" id="get-map-data">trivoo.net</a>
+            </div>
+            <h3>Inquiry</h3>
+            <div class="col-md-4">
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>5-420 Erb St. West</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Suite 207</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Waterloo, ON, N2L 6K6, Canada</td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>(855) 310-6344</td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>(519) 594-0900</td>
+                        </tr>
+                        <tr>
+                            <td>Fax:</td>
+                            <td>(519) 957-2471</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-8">
+                <form id="inquiry">
+                    <input type="email" name="email" placeholder="Reply email address" />
+                    <br />
+                    <input type="text" name="subject" placeholder="Subject of your inquiry" />
+                    <br />
+                    <textarea name="message" placeholder="Your Inquiry"></textarea>
+                    <br />
+                    <input type="submit" value="Send" class="btn btn-primary btn-md" />
+                    <input type="reset" value="Reset" class="btn btn-primary btn-md" />
+                    <span id="result"></span>
+                    <br />
+                </form>
+            </div>
+
+            <hr/>&copy; Rich Hildred <script> document.write( new Date().getFullYear())</script>
+            <a href="#home" class="scrollToTop" ng-hide="bAboveMenu">TO TOP</a>
+            <div ng-view></div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.js"></script>
+            <script>
+                // create our angular app and inject ui.bootstrap
+                angular.module('app', ['ui.bootstrap', 'ngRoute', 'duScroll'])
+                    .config(['$routeProvider', function($routeProvider) {
+                        $routeProvider
+                            .when('/:elementid', {
+                            template: ' ',
+                            controller: ['$scope','$routeParams', '$document', function($scope, $routeParams, $document) {
+                                $scope.$parent.navCollapsed = true;
+                                var someElement = angular.element(document.getElementById($routeParams.elementid));
+                                var nOffset = 60;
+                                if($scope.$parent.bAboveMenu){
+                                    nOffset = 140;
+                                }
+                                $document.scrollToElement(someElement, nOffset, 500);
+                            }]
+                        });
+                    }])
+
+                    .controller('mainController', function($scope, $document) {
+                    $scope.myInterval = 5000;
+                    $scope.noWrapSlides = false;
+                    var slides = $scope.slides = [];
+                    $scope.addSlide = function() {
+                        var newWidth = 600 + slides.length + 1;
+                        slides.push({
+                            image: '//placekitten.com/' + newWidth + '/300',
+                            text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+                            ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+                        });
+                    };
+                    for (var i=0; i<10; i++) {
+                        $scope.addSlide();
+                    }
+                    $scope.bAboveMenu = true;
+                    $scope.navClass = "navbar-static-top";
+                    window.onscroll = function() {
+                        // we use the window.onscroll here because to do it in Angular is too slow.
+                        var el = document.getElementById("home");
+                        var navTop = el.getBoundingClientRect().bottom;
+                        if($document.scrollTop() > navTop){
+                            if($scope.bAboveMenu){
+                                $scope.bAboveMenu = false;
+                                $scope.navClass = 'navbar-fixed-top';
+                                $scope.$apply();
+                            }
+                        }else{
+                            if(!$scope.bAboveMenu){
+                                $scope.bAboveMenu = true;
+                                $scope.navClass = 'navbar-static-top';
+                                $scope.$apply();
+                            }
+                        }
+
+                    };
+
+
+
+                });
+            </script>
+            </body>
+        </html>

@@ -19,7 +19,7 @@ angular.module('app', ['ui.bootstrap', 'ngRoute', 'duScroll'])
         });
     }])
 
-    .controller('mainController', function($scope, $document) {
+    .controller('navController', function($scope, $document) {
     $scope.bAboveMenu = true;
     $scope.navClass = "navbar-static-top";
     window.onscroll = function() {

@@ -46,7 +46,7 @@
         </style>
     </head>
 
-    <body ng-app="app" ng-controller="mainController">
+    <body ng-app="app">
         <div id="home">
             <carousel interval="5000" no-wrap="false" ng-init='slides=[{"image":"https://placekitten.com/601/300", "text": "cute kitten"}, {"image":"https://placekitten.com/602/300", "text": "another one"}, {"image":"https://placekitten.com/603/300", "text": "very cute kitten"}]'>
                 <slide ng-repeat="slide in slides" active="slide.active">
@@ -58,7 +58,7 @@
                 </slide>
             </carousel>
         </div>
-        <div class="navbar navbar-inverse {{navClass}}" role="navigation">
+        <div class="navbar navbar-inverse {{navClass}}" role="navigation"  ng-controller="navController">
             <div class="navbar-header">
 
                 <!-- note the ng-init and ng-click here: -->
@@ -83,7 +83,8 @@
                     </li>
                 </ul>
             </div>
-
+            <a href="#home" class="scrollToTop" ng-hide="bAboveMenu">TO TOP</a>
+            <div ng-view></div>
         </div>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -196,8 +197,7 @@
         </div>
 
         <hr/>&copy; Rich Hildred <script> document.write( new Date().getFullYear())</script>
-        <a href="#home" class="scrollToTop" ng-hide="bAboveMenu">TO TOP</a>
-        <div ng-view></div>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>

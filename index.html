@@ -183,13 +183,16 @@
                             .when('/:elementid', {
                             template: ' ',
                             controller: ['$scope','$routeParams', '$document', function($scope, $routeParams, $document) {
-                                $scope.$parent.navCollapsed = true;
                                 var someElement = angular.element(document.getElementById($routeParams.elementid));
                                 var nOffset = 60;
                                 if($scope.$parent.bAboveMenu){
                                     nOffset = 140;
                                 }
+                                if($scope.$parent.navCollapsed == false){
+                                    nOffset = 270;
+                                }
                                 $document.scrollToElement(someElement, nOffset, 500);
+                                $scope.$parent.navCollapsed = true;
                             }]
                         });
                     }])
@@ -213,9 +216,9 @@
                     $scope.navClass = "navbar-static-top";
                     window.onscroll = function() {
                         // we use the window.onscroll here because to do it in Angular is too slow.
-                        var el = document.getElementById("home");
+                        var el = document.body.firstElementChild;
                         var navTop = el.getBoundingClientRect().bottom;
-                        if($document.scrollTop() > navTop){
+                        if(navTop < 0){
                             if($scope.bAboveMenu){
                                 $scope.bAboveMenu = false;
                                 $scope.navClass = 'navbar-fixed-top';

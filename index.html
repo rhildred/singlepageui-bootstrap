@@ -9,84 +9,55 @@
         <meta name="author" content="rhildred">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
 
         <!--[if lt IE 9]>
 <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-        <style>
-            .nav{
-                margin: 0 0 0 .2em;
-            }
-            a.scrollToTop {
-                width: 100px;
-                height: 130px;
-                padding: 10px;
-                text-align: center;
-                font-family: 'Roboto Condensed', 'tahoma', 'Verdana', 'Geneva', sans-serif;
-                font-size: 13px;
-                background: url('https://rhildred.github.io/singlePage/www/images/uparrow.png') no-repeat center center;
-                font-weight: none;
-                color: #444;
-                text-decoration: none;
-                position: fixed;
-                top: 75px;
-                right: 1px;
-                display: block;
-                -webkit-transition: 3s;
-                -moz-transition: 3s;
-                transition: 3s;
-                cursor: pointer;
-                z-index: 8;
-            }
-            .scrollToTop:hover {
-                text-decoration: none;
-            }
-            slide{
-                height: 300px;
-            }
-        </style>
     </head>
 
-    <body ng-app="app">
-        <div id="home">
-            <carousel interval="5000" no-wrap="false" ng-init='slides=[{"image":"https://placekitten.com/601/300", "text": "cute kitten"}, {"image":"https://placekitten.com/602/300", "text": "another one"}, {"image":"https://placekitten.com/603/300", "text": "very cute kitten"}]'>
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
-                    <div class="carousel-caption">
-                        <h4>Slide {{$index + 1}}</h4>
-                        <p>{{slide.text}}</p>
-                    </div>
-                </slide>
-            </carousel>
-        </div>
-        <div class="navbar navbar-inverse {{navClass}}" role="navigation"  ng-controller="navController">
-            <div class="navbar-header">
-
-                <!-- note the ng-init and ng-click here: -->
-                <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
+    <body>
+        <!-- this part is the angular app for now -->
+        <div ng-app="app" ng-controller="navController">
+            <div id="home">
+                <carousel interval="5000" no-wrap="false" ng-init='slides=[{"image":"https://placekitten.com/601/300", "text": "cute kitten"}, {"image":"https://placekitten.com/602/300", "text": "another one"}, {"image":"https://placekitten.com/603/300", "text": "very cute kitten"}]'>
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <h4>Slide {{$index + 1}}</h4>
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </slide>
+                </carousel>
             </div>
+            <div class="navbar navbar-inverse {{navClass}}" role="navigation">
+                <div class="navbar-header">
 
-            <!-- note the ng-class here -->
-            <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+                    <!-- note the ng-init and ng-click here: -->
+                    <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li du-scrollspy="home" class="active"><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
-                    </li>
-                    <li du-scrollspy="about"><a href="#about" data-toggle="collapse" data-target=".navbar-collapse.in">About</a>
-                    </li>
-                    <li du-scrollspy="contact"><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a>
-                    </li>
-                </ul>
+                <!-- note the ng-class here -->
+                <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li du-scrollspy="home" class="active"><a href="#home" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a>
+                        </li>
+                        <li du-scrollspy="about"><a href="#about" data-toggle="collapse" data-target=".navbar-collapse.in">About</a>
+                        </li>
+                        <li du-scrollspy="contact"><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#home" class="scrollToTop" ng-hide="bAboveMenu">TO TOP</a>
+                <div ng-view></div>
             </div>
-            <a href="#home" class="scrollToTop" ng-hide="bAboveMenu">TO TOP</a>
-            <div ng-view></div>
         </div>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

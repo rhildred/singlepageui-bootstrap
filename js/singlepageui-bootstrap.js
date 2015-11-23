@@ -1,5 +1,5 @@
 // create our angular app and inject ui.bootstrap
-angular.module('app', ['ui.bootstrap', 'ngRoute', 'duScroll'])
+angular.module('app', ['ui.bootstrap', 'ngRoute', 'duScroll', 'ngTouch'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/:elementid', {

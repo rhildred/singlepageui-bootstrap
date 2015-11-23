@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>We Didn't get your inquiry</title>
+        <meta name="description" content="Single page UI-bootstrap template with back-button support">
+        <meta name="author" content="rhildred">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="https://rhildred.github.io/singlepageui-bootstrap/css/main.css" />
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+
+        </script>
+
+        <!--[if lt IE 9]>
+<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    </head>
+
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <strong>We didn't get your inquiry!</strong> Please try to reach us by other means.
+        </div>
+        <button type="button" class="btn btn-lg btn-info" style="display:block; margin: 0 auto" onclick="goBack()">Back</button>
+    </body>
+</html>
